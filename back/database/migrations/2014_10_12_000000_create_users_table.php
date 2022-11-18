@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->date('year_of_birth');
-            $table->string('photo');//photo path
+            $table->string('photo')->nullable();//photo path
         });
     }
 
