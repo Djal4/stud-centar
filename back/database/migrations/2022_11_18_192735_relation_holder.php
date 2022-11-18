@@ -36,7 +36,7 @@ return new class extends Migration
         });
 
         Schema::table('tickets',function(Blueprint $table){
-            $table->foreignId('card_id')->constrained('cards');
+            $table->foreignId('user_id')->constrained('users');
             $table->foreignId('parent_id')->nullable()->constrained('tickets');
         });
 
