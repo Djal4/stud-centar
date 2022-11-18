@@ -30,7 +30,7 @@ return new class extends Migration
             $table->foreignId('card_id')->constrained('cards');
         });
 
-        Schema::table('meal_price',function(Blueprint $table){
+        Schema::table('meal_prices',function(Blueprint $table){
             $table->foreignId('card_type_id')->constrained('card_type');
             $table->foreignId('meal_id')->constrained('meals');
         });
