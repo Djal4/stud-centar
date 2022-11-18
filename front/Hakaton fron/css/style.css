@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
+
+
+:root{
+	--fontLogin: 'Inter', sans-serif;
+	--border-login-container:#131212;
+	--background-login-container: rgba(174, 174, 174, 0.92);
+
+	--color-input:#0E0E0E;
+	--color-input-placeholder: rgba(41, 38, 38, 0.48);
+	--color-forgot-pass:rgba(4, 5, 5, 0.63);
+}
+
+*{
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	
+}
+
+#main{
+
+	background-image: url('../images/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;	
+	
+	height: 100vh;
+	text-align: center;
+ }
+
+ #login-container{
+ 	width: 66%;
+ 	margin-left: auto;
+ 	margin-right: auto;
+
+ 	background: var(--background-login-container);
+ 	border: 3px solid var(--border-login-container);
+/*	filter: blur(2px);*/
+	border-radius: 20px;
+
+ }
+
+.login-p{
+ 	margin-top: 50px;
+ 	margin-bottom: 40px;
+
+ 	font-family: var(--fontLogin);
+	font-style: normal;
+	font-weight: 500;
+	font-size: 70px;
+	line-height: 85px;
+}
+
+/*test-field in form*/
+
+ .text-field{
+ 	width: 90%;
+ 	
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	display: inline-flex;
+ }
+ .text-field input
+ {
+ 	width: 100%;
+ 	height: 40px;	
+ 	border: none;
+ 	border-bottom: 2px solid black;
+ 	background: transparent;
+ 	
+
+ 	align-self: end;
+ 	position: relative;
+ 	bottom: 20px;
+
+ 	font-family: var(--fontLogin);
+	font-style: normal;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 36px;
+	letter-spacing: 0.03em;
+ 	color: var(--color-input);
+ }
+
+.text-field input::placeholder {
+	color: var(--color-input-placeholder);
+}
+
+.text-field input:focus{
+	outline: none;
+	border: none;
+	border-bottom: 2px solid black;
+}
+
+ .text-field i{
+	font-size: 80px;
+	margin: 0px 10px;
+ }
+
+/*end test-field in form*/
+
+.forgot-pass{
+	font-family: var(--fontLogin);
+	color: var(--color-forgot-pass);
+	font-weight: 300;
+	font-size: 25px;
+	line-height: 30px;
+	margin: 50px 0px;
+	font-style: italic;
+}
+
+.sign-in a{
+	padding: 21.5px 127.5px;
+	font-family: var(--fontLogin);
+	font-style: normal;
+	font-weight: 700;
+	font-size: 35px;
+	line-height: 42px;
+
+	background-image: url('../images/signinButtonImg.jpg');
+	color: white;
+	border-radius: 30px 0px;
+}
+
+.sign-in{
+
+	margin-bottom: 70px;
+
+}
