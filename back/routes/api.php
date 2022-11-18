@@ -25,5 +25,6 @@ Route::get("/generate/users",function(){
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::resource("/user",UserController::class)->except(["create","index","edit"]);
+    Route::put("/user/{id}/changePassword",[UserController::class,"changePassword"]);
     Route::post("/logout",[AuthController::class,"logOut"]);
 });

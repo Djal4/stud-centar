@@ -58,7 +58,7 @@ class UserController extends Controller
     public function changePassword(Request $request,$id)
     {
         $user=User::find($id);
-        return response()->json($user->update($request->input('password')));
+        return response()->json($user->update(["password"=>bcrypt($request->input('password'))]));
     }
 
     /**
