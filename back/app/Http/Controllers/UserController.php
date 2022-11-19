@@ -16,6 +16,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',User::class);
         return response()->json(User::create([
             'name'=>$request->input('name'),
             'lastname'=>$request->input('lastname'),
@@ -32,9 +33,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        return response()->json(User::find($id));
+        $this->authorize('view',$user);
+        return response()->json($user);
     }
 
     public function showLoggedUser()
@@ -51,6 +53,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update',User::class);
         $user=User::find($id);
         if(empty($request->input('password')))    
             $user->update($request->all());
@@ -74,6 +77,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('destroy',User::class);
         return response()->json(User::destroy($id));
     }
 }
