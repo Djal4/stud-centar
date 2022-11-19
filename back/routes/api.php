@@ -27,6 +27,7 @@ Route::get("/generate/users",function(){
 
 Route::group(['middleware'=>['auth:sanctum','cors']],function(){
     Route::resource("/user",UserController::class)->except(["create","index","edit"]);
+    Route::get("/showLoggedUser",[UserController::class,"showLoggedUser"]);
     Route::resource("/post",PostController::class)->except(["create","edit"]);
     Route::resource("/ticket",TicketController::class)->except(["create","edit"]);
     Route::post("/ticket/response/{id}",[TicketController::class,"ticketResponse"]);
