@@ -18,7 +18,7 @@ class Pavilion extends Model
      */
     protected $fillable=[
         'title',
-        'price',
+        'price_per_day',
         'location'
     ];
 }

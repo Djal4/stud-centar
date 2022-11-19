@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PavilionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
@@ -32,5 +33,6 @@ Route::group(['middleware'=>['auth:sanctum','cors']],function(){
     Route::resource("/ticket",TicketController::class)->except(["create","edit"]);
     Route::post("/ticket/response/{id}",[TicketController::class,"ticketResponse"]);
     Route::put("/user/{id}/changePassword",[UserController::class,"changePassword"]);
+    Route::resource("/pavilion",PavilionController::class)->only(["index","store","show","destroy"]);
     Route::post("/logout",[AuthController::class,"logOut"]);
 });
