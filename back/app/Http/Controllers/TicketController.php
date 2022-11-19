@@ -15,6 +15,7 @@ class TicketController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny',Ticket::class);
         return response()->json([Ticket::select('time')->orderByDesc('time')->get()]);
     }
 
@@ -26,6 +27,7 @@ class TicketController extends Controller
      */
     public function ticketResponse(Request $request,$id)
     {
+        $this->authorize('response',Ticket::class);
         return response()->json(Ticket::create([
             "content"=>$request->input('content'),
             "time"=>$request->input('time'),
@@ -42,6 +44,7 @@ class TicketController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',Ticket::class);
         return response()->json(Ticket::create([
             "content"=>$request->input('content'),
             "time"=>$request->input('time'),
@@ -55,21 +58,22 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ticket $ticket)
     {
-        $ticket=DB::table('tickets')
+        $this->authorize('view',$ticket);
+        $tckt=DB::table('tickets')
         ->join('users','tickets.user_id','=','users.id')
         ->select('tickets.content','tickets.time','users.name','users.lastname')
-        ->where('tickets.id','=',$id)
+        ->where('tickets.id','=',$ticket->id)
         ->limit(1)
         ->get();
         $response=DB::table('tickets')
         ->join('users','tickets.user_id','=','users.id')
         ->select('tickets.content','tickets.time','users.name','users.lastname')
-        ->where('tickets.parent_id','=',$id)
+        ->where('tickets.parent_id','=',$ticket->id)
         ->limit(1)
         ->get();
-        return response()->json([$ticket,$response]);
+        return response()->json([$tckt,$response]);
     }
 
     /**
@@ -79,9 +83,9 @@ class TicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ticket $ticket)
     {
-        $ticket=Ticket::find($id);
+        $this->authorize('update',$ticket);
         return response()->json($ticket->update($request->all()));
     }
 
@@ -93,6 +97,7 @@ class TicketController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete',Ticket::class);
         return response()->json(Ticket::destroy($id));
     }
 }
