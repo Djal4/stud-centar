@@ -1,0 +1,353 @@
+:root{
+	--font:'IM FELL English SC';
+	--font-inder: 'Inder', sans-serif;
+
+	--background-pink:rgba(201, 177, 220, 0.5);
+	--background-gery:#D9D9D9;
+	--background-hero:rgba(242, 242, 242, 0.7);
+	--background-card:rgba(238, 238, 238, 0.6);
+	--background-meal-type:rgba(238, 238, 238, 0.6);
+}
+
+#left-side{
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+#left-side img{
+	width: 35px;
+	margin-left: auto;
+	margin-right: auto;
+}
+#left-side p{
+	font-family: var(--font);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 30px;
+}
+
+#right-side{
+	display: inline-flex;
+	align-items: center;
+}
+#right-side{
+	font-family: var(--font);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 25px;
+	line-height: 30px;
+	letter-spacing: 0.03em;
+}
+#meni{
+	display: grid;
+	row-gap: 10px;
+}
+.menza-modal{
+	background-color: blue;
+	width: 90%;
+	height: 80%;
+	padding: 35px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	background: #F2F2F2;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	border-radius: 10px;
+	backdrop-filter: blur(2px);
+}
+
+.menza-modal .close-button{
+	position: absolute;
+	right: 35px;
+	top:35px;
+}
+.menza-modal .modal-title{
+	align-self: center;
+	margin-top: 10px;
+	font-family: 'IM FELL English SC';
+	font-style: normal;
+	font-weight: 400;
+	font-size: 40px;
+	line-height: 51px;
+}
+.menza-modal .modal-body{
+	font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+}
+.cenovnik{
+	display: flex;
+	gap:10px;
+	justify-content: space-between;
+}
+.cenovnik-column{
+	display: flex;
+	flex-direction: column;
+	gap:10px;
+	align-items: center;
+	justify-content: space-between;
+}
+.cenovnik-column > input[type="number"]{
+	width:100px;
+	height: 40px;
+	background: rgba(203, 193, 193, 0.7);
+	border:none;
+}
+.cenovnik-column:first-of-type > *,.cenovnik-column:last-of-type > *{
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.ReactModal__Overlay{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.meni-row{
+	display: flex;
+	column-gap: 10px;
+
+}
+.ukupno{
+	margin-top: 20px;
+	display: flex;
+	justify-content: flex-end;
+}
+.veci{
+/*	width: 45%;*/
+	background: var(--background-pink);
+	display: inline-flex;
+	align-items: center;
+	padding: 30px 50px;
+	column-gap: 20px;
+}
+.veci p{
+	font-family: var(--font);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 30px;
+	position: relative;
+	bottom: -10px;
+}
+.manji{
+	width: 100%;
+	background: var(--background-gery);
+	display: inline-flex;
+	align-items: center;
+	padding: 30px 50px;
+	column-gap: 20px;
+}
+.manji p{
+	font-family: var(--font);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 30px;
+	position: relative;
+	bottom: -10px;
+}
+
+
+
+/*Card*/
+
+#hero{
+	text-align: center;
+	background: var(--background-hero);
+	border-top: 1px solid #EEDDDD;
+	margin-top: 50px;
+    padding-bottom: 50px;
+}
+.card-sec > div{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.card-sec > div p{
+    margin: 0;
+}
+.card{
+	background: var(--background-card);
+	border: 1px solid rgba(0, 0, 0, 0.32);
+	border-radius: 10px;
+	display: inline-flex;
+	flex-direction: column;
+	padding: 10px 20px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	text-align: left;
+	background-image: url('../images/card-rectengle.png');
+	background-repeat: no-repeat;
+	background-position:  70% 0%;
+    gap:15px;
+}
+.card-first{
+	display: inline-flex;
+	gap: 10px 20px;
+}
+.logo{
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	align-self: flex-start;
+}
+.logo img{
+	width: 35px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.logo p{
+	font-family: var(--font);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 30px;
+}
+
+.card-sec{
+	display: grid;
+	grid-template-columns: auto auto auto auto;
+	justify-content: space-between;
+/*	gap: 50px;*/
+	font-family: var(--font-inder);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 19px;
+	row-gap: 10px;
+}
+
+#meal-list{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+}
+
+.meal-type{
+	background: var(--background-meal-type);
+	border: 1px solid rgba(0, 0, 0, 0.52);
+	border-radius: 40px;
+	padding: 20px 50px;
+	min-width: 30%;
+}
+.meal-type p{
+	font-family: var(--font);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 30px;
+	line-height: 38px;
+}
+#spec-font{
+	font-family: var(--font-inder);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 50px;
+	line-height: 62px
+}
+.button{
+	font-family: var(--font-inder);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	background: rgba(201, 177, 220, 0.9);
+	border: 1px solid rgba(0, 0, 0, 0.52);
+	border-radius: 20px;
+	padding: 5px 15px;
+	margin-top: 20px;
+}
+
+.dorucak{
+	background-image: url('../images/dorucak.png');
+	background-repeat: no-repeat;
+	background-position:  100% 0%;
+}
+.rucak{
+	background-image: url('../images/rucak.png');
+	background-repeat: no-repeat;
+	background-position:  100% 0%;
+}
+.vecera{
+	background-image: url('../images/vecera.png');
+	background-repeat: no-repeat;
+	background-position:  100% 0%;
+}
+
+@media only screen and (max-width: 690px)
+{
+
+	.veci, .manji{
+		padding: 20px 40px ;
+	}
+
+	.veci img, .manji img{
+		width: 50px;
+	}
+	
+	.veci p, .manji p{
+		font-size: 25px;
+	}
+
+
+	#meal-list{
+		display: flex;
+		flex-direction: column;
+		padding: 0px 20px;
+		align-items: center;
+	}
+
+	.meal-type{
+		padding: 20px 30px;
+		min-width: 70%;
+	}
+
+	.rucak{
+		margin: 20px 0px;
+	}
+}
+
+.btn-spec{
+	border-radius: 30px 0px;
+	padding: 10px 30px;
+	display: none;
+}
+
+#month{
+	display: flex;
+	padding: 10px 40px;
+}
+
+#month p{
+	font-family: var(--font);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 35px;
+	line-height: 25px;
+}
+.ukupno span{
+	font-size: 30px;
+}
+@media only screen and (max-width: 690px)
+{
+	.card{
+		display: none;
+	}
+	.btn-spec{
+		display: inline-block;
+	}
+	#month{
+		justify-content: center;
+	}
+	.menza-modal .modal-title{
+		font-size: 25px;
+	}
+	.menza-modal .close-button{
+		right: 15px;
+		top:15px;
+	}
+	.ukupno > p > span{
+		font-size: 20px;
+	}
+}

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Login from "../components/Login";
 import Loader from "../components/Loader";
 import useSessionStorage from "../hooks/useSessionStorage";
+import Feeds from "../components/Feeds";
 
 export default function Home(){
     const [loading,setLoading]=useState(true);
@@ -33,6 +34,6 @@ export default function Home(){
     if(loading)
         return <Loader/>;
     if(token!==null)
-        return <>{JSON.stringify(user)}</>;
+        return <><Feeds setToken={setToken}/></>;
     return <Login token={token} setToken={setToken}/>;
 }

@@ -1,0 +1,106 @@
+:root{
+
+	--font-Whereas: 'IM Fell English SC', serif;
+
+	--color-input:rgba(0, 0, 0, 0.31);
+	--color-odd-tr:rgba(201, 177, 220, 0.2);
+	--color-even-tr:rgba(217, 217, 217, 0.2);
+
+	--background-feed-table: rgba(242, 242, 242, 0.7);
+	--background-input: rgba(217, 217, 217, 0.7);
+	--backgronud-first-in-table:#D9D9D9;
+
+	--border-input: 1px solid rgba(0, 0, 0, 0.39);
+}
+
+#feed-table{
+	padding: 0px 30px;
+	background: var(--background-feed-table);
+}
+
+#search-field{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 50px;
+}
+#search-field input{
+	color: var(--color-input);
+	font-family: var(--font-Whereas);
+	font-style: normal;
+	font-weight: 400;
+	font-size: 22px;
+	line-height: 28px;
+	width: 40%;
+	max-width: 392px;
+	padding: 7px;
+
+	background: var(--background-input);
+	border: var(--border-input);
+}
+
+/*Table*/
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-Whereas);
+  font-size: 24px;
+}
+
+tr:first-of-type {
+  border-bottom: 2px solid black;
+}
+
+td, th {
+  border: 1px solid #ffffff;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background: var(--color-even-tr);
+}
+tr:nth-child(odd) {
+  background-color: var(--color-odd-tr);
+}
+
+th:nth-child(n+2), td:nth-child(n+2) {
+	text-align: center;
+}
+
+.first{
+	background: var(--backgronud-first-in-table);
+}
+
+@media only screen and (max-width: 671px){
+
+	#search-field input{
+		padding: 5px;
+	}
+	table{
+		font-size: 20px;
+	}
+
+}
+
+@media only screen and (max-width: 620px){
+
+	#search-field input{
+		padding:  3px;
+		font-size: 16px;
+	}
+	table{
+		font-size: 18px;
+	}
+}
+
+@media only screen and (max-width: 413px){
+
+	#search-field input{
+		padding: 2px;
+		font-size: 16px;
+	}
+	table{
+		font-size: 16px;
+		padding: 0px;
+	}
+}

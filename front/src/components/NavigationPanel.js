@@ -10,42 +10,50 @@ export default function NavigationPanel(){
         <div className="main-header absolute-center">
                 <nav>
                     <div className="nav-row">
+                    <Link to="/">
                         <div className="nav-item">
                             <div className="absolute-center">
                                 <img src={houses} alt="Houses"/>
                             </div>
                             <div className="absolute-center">
-                                <Link to="/">Početna</Link>
+                                Početna
                             </div>
-                        </div>
+                            </div>
+                    </Link>
+                    <Link to="/e-menza">    
                         <div className="nav-item">
                             <div className="absolute-center">
                                 <img src={egg} alt="Egg"/>
                             </div>
                             <div className="absolute-center">
-                                <Link to="/e-menza">E-menza</Link>
+                                E-menza
                             </div>
                         </div>
+                        </Link>
                     </div>
                     
                     <div className="nav-row">
+                    <Link to="/e-dom">
                         <div className="nav-item">
                             <div className="absolute-center">
                                 <img src={building} alt="Building"/>
                             </div>
                             <div className="absolute-center">
-                                <Link to="/e-dom">E-dom</Link>
+                                E-dom
                             </div>
                         </div>
+                       
+                        </Link>
+                        <Link to="/uplata-racuna">
                         <div className="nav-item">
                             <div className="absolute-center">
                                 <img src={creditCard} alt="Credit card"/>
                             </div>
                             <div className="absolute-center">
-                                <Link to="/uplata-racuna">Uplata racuna</Link>
+                                Uplata racuna
                             </div>
                         </div>
-                        
+                        </Link>
                     </div>
                 </nav>
             </div>

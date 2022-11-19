@@ -2,7 +2,7 @@ import logo from "../images/logo.png";
 import personCircle from "../images/person-circle.png";
 import "../css/header.css";
 import { useState } from "react";
-export default function Header(){
+export default function Header({setToken=(a)=>{}}){
     const [menuOpened,setMenuOpened]=useState(false);
     return(
         <>
@@ -22,7 +22,7 @@ export default function Header(){
         <div className="menu" style={{display:menuOpened?"flex":"none"}}>
             <div className="menu-item">Vidi profil</div>
             <div className="menu-item">Promeni lozinku</div>
-            <div className="menu-item">Odjavi se</div>
+            <div className="menu-item" onClick={()=>setToken(null)}>Odjavi se</div>
         </div>
         </>
     );
