@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CardStoreRequest;
+use App\Http\Requests\CardUpdateRequest;
 use App\Models\AccomodationPayment;
 use App\Models\Card;
 use App\Models\MealPrice;
@@ -12,10 +14,10 @@ class CardController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Request\CardStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CardStoreRequest $request)
     {
         $this->authorize('create',Card::class);
         return response()->json(Card::store([
@@ -43,11 +45,11 @@ class CardController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\CardUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CardUpdateRequest $request, $id)
     {
         $this->authorize('update',Card::class);
         $card=Card::find($id);
@@ -69,6 +71,7 @@ class CardController extends Controller
             $card->dinner+=$request->input('dinner');
             $card->money-=$money;
         }
+        return response()->json($card);
     }
 
     /**

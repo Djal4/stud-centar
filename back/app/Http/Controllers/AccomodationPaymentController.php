@@ -23,13 +23,17 @@ class AccomodationPaymentController extends Controller
             $price=DB::table('cards')
                 ->join('pavilion','pavilion.id','=','cards.pavilion_id')
                 ->select('pavilion.price')
-                ->where('cards.id','=',$id)
+                ->where('cards.id','=',$card->id)
                 ->limit(1)
                 ->get();
-            
         }
+        if($card->money>$price)
+            $card->money-=$price;
         return response()->json(
-        
+            AccomodationPayment::create([
+                "payment_date"=>$request->payment_date,
+                "card_id"=>$card->id
+            ])
         );
     }
 

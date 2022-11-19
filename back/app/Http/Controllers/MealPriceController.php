@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MealPriceStoreRequest;
+use App\Http\Requests\MealPriceUpdateRequest;
 use App\Models\MealPrice;
 use Illuminate\Http\Request;
 
@@ -21,12 +23,13 @@ class MealPriceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\MealPriceStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MealPriceStoreRequest $request)
     {
-        $this->authorize('create',MealPrice::class);
+        $this->authorize('create', MealPrice::class);
+
         return response()->json([
             "price"=>$request->price,
             "card_type_id"=>$request->card_type_id,
@@ -42,20 +45,22 @@ class MealPriceController extends Controller
      */
     public function show($id)
     {
-        $this->authorize('view',MealPrice::class);
+        $this->authorize('view', MealPrice::class);
+
         return response()->json(MealPrice::find($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\MealPriceUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, MealPrice $mealPrice)
+    public function update(MealPriceUpdateRequest $request, MealPrice $mealPrice)
     {
-        $this->authorize('update',MealPrice::class);
+        $this->authorize('update', MealPrice::class);
+
         return response()->json($mealPrice->update($request->all()));
     }
 

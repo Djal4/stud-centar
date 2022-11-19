@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostStoreRequest;
+use App\Http\Requests\PostUpdateRequest;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
@@ -25,10 +27,10 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\PostStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
         $this->authorize('create',Post::class);
         return response()->json(Post::create([
@@ -59,11 +61,11 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(PostUpdateRequest $request, Post $post)
     {
         $this->authorize('update',$post);
         return response()->json($post->update($request->all()));

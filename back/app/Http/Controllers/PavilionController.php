@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PavilionStoreRequest;
 use App\Models\Pavilion;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,7 @@ class PavilionController extends Controller
         return response()->json(Pavilion::all());
     }
 
-    public function store(Request $request)
+    public function store(PavilionStoreRequest $request)
     {
         $this->authorize('create',Pavilion::class);
         return response()->json(Pavilion::create([

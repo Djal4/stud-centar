@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,15 +13,16 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UserStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserStoreRequest $request)
     {
         $this->authorize('create',User::class);
+
         return response()->json(User::create([
-            'name'=>$request->input('name'),
-            'lastname'=>$request->input('lastname'),
+            'name'=> $request->input('name'),
+            'lastname'=> $request->input('lastname'),
             'email'=>$request->input('email'),
             'password'=>bcrypt($request->input('password')),
             'year_of_birth'=>$request->input('year_of_birth'),
@@ -47,17 +50,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\UserUpdateRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $this->authorize('update',User::class);
         $user=User::find($id);
         if(empty($request->input('password')))    
             $user->update($request->all());
-        else{
+        else {
             $user->update($request->except('password'));
         }
         return response()->json($user);

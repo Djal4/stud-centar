@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TicketStoreRequest;
+use App\Http\Requests\TicketUpdateRequest;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -39,10 +41,10 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\TicketStoreRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TicketStoreRequest $request)
     {
         $this->authorize('create',Ticket::class);
         return response()->json(Ticket::create([
@@ -79,11 +81,11 @@ class TicketController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\TicketUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
+    public function update(TicketUpdateRequest $request, Ticket $ticket)
     {
         $this->authorize('update',$ticket);
         return response()->json($ticket->update($request->all()));
