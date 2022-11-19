@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
@@ -35,6 +35,11 @@ class UserController extends Controller
     public function show($id)
     {
         return response()->json(User::find($id));
+    }
+
+    public function showLoggedUser()
+    {
+        return response()->json(Auth::user());
     }
 
     /**

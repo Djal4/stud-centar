@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TicketController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,7 +27,10 @@ Route::get("/generate/users",function(){
 
 Route::group(['middleware'=>['auth:sanctum','cors']],function(){
     Route::resource("/user",UserController::class)->except(["create","index","edit"]);
+    Route::get("/showLoggedUser",[UserController::class,"showLoggedUser"]);
     Route::resource("/post",PostController::class)->except(["create","edit"]);
+    Route::resource("/ticket",TicketController::class)->except(["create","edit"]);
+    Route::post("/ticket/response/{id}",[TicketController::class,"ticketResponse"]);
     Route::put("/user/{id}/changePassword",[UserController::class,"changePassword"]);
     Route::post("/logout",[AuthController::class,"logOut"]);
 });
