@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import "../css/login.css";
+import Logo from '../images/logo-login.png';
 
 export default function Login({setToken}){
     const login=async()=>{
@@ -37,8 +38,9 @@ export default function Login({setToken}){
     return(
         <>
             <main id="main" className="absolute-center full-size">
+            <img src={Logo} alt="Logo" id="logo-id"/>
                 <div id="login-container">
-                    <p className="login-p">ULOGUJ SE</p>
+                    <p className="login-p">PRIJAVA</p>
                     <form onSubmit={(event)=>event.preventDefault()} name="login">
                         <div className="text-field">
                             <i className="bi bi-envelope"></i>

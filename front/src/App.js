@@ -12,6 +12,7 @@ function App() {
                     <Route path='/' element={<Home/>} />
                     <Route path='/create-account' element={<Register/>}/>
                     <Route path='/e-dom' element={<EDom/>}/>
+                    <Route path='/test' element={<Register/>} />
                 </Routes>
             </Router>
         </div>

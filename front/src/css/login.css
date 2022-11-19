@@ -2,16 +2,23 @@
 
 :root{
 	--fontLogin: 'Inter', sans-serif;
-	--border-login-container:#131212;
-	--background-login-container: rgba(174, 174, 174, 0.92);
+	--border-login-container:7px solid rgba(201, 177, 220, 0.3);
+
+	--background-login-container:rgba(207, 213, 244, 0.9);
+	--background-button-prijavi-se:rgba(238, 59, 59, 0.9);
 
 	--color-input:#0E0E0E;
 	--color-input-placeholder: rgba(41, 38, 38, 0.48);
 	--color-forgot-pass:rgba(4, 5, 5, 0.63);
+	--color-login-p:#EE3B3B;
+
+	--text-shadow-prijava:0px 4px 4px rgba(0, 0, 0, 0.25);
+
+	--box-shadow-button-prijavi-se:0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #main{
-	background-image: url('../images/bg.jpg');
+	background-image: url('../images/background-image.png');
 	background-size: cover;	
 	text-align: center;
 }
@@ -22,7 +29,7 @@
 	margin-left: auto;
 	margin-right: auto;
 	background: var(--background-login-container);
-	border: 3px solid var(--border-login-container);
+	border:var(--border-login-container);
 /*	filter: blur(2px);*/
 	border-radius: 20px;
 	display: flex;
@@ -39,6 +46,9 @@
 	font-weight: 500;
 	font-size: 70px;
 	line-height: 85px;
+	color: var(--color-login-p);
+	/* border: 1px solid #000000; */
+	text-shadow: var(--text-shadow-prijava);
 }
 
 /*test-field in form*/
@@ -102,12 +112,12 @@
 	font-weight: 700;
 	font-size: 35px;
 	line-height: 42px;
-
-	background-image: url('../images/signinButtonImg.jpg');
-	background-image: linear-gradient(rgba(0, 0, 0, 0.5),
-                    rgba(0, 0, 0, 0.5)), url('../images/signinButtonImg.jpg');
+	background: var(--background-button-prijavi-se);
+	box-shadow: var(--box-shadow-button-prijavi-se);
 	color: white;
 	border-radius: 30px 0px;
+
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .text-field:has(input) + p,
@@ -158,4 +168,24 @@ form[name="login"]{
 		font-size: 50px;
 		line-height: 55px;
 	}
+}
+@media screen and (max-width:580px) {
+	#logo-id{
+		max-width:350px;
+		width: 100%;
+	}
+	.text-field i{
+		font-size: 50px;
+		margin: 0px 10px;
+	}
+	#login-container > .login-p{
+		margin-top: 30px;
+		margin-bottom: 15px;
+	}
+	.forgot-pass{
+		font-size: 20px;
+		margin-top:20px;
+		margin-bottom: 20px;
+	}
+	
 }
