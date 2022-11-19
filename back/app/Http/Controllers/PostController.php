@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\{
+    PostStoreRequest,
+    PostUpdateRequest
+};
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 class PostController extends Controller
@@ -14,9 +17,11 @@ class PostController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Post::class);
+
         return response()->json(DB::table('posts')
-        ->join('users','posts.author_id','=','users.id')
-        ->select('posts.title','posts.creation_time','users.name','users.lastname')
+        ->join('users', 'posts.author_id', '=', 'users.id')
+        ->select('posts.title', 'posts.creation_time', 'users.name', 'users.lastname')
         ->orderByDesc('posts.creation_time')
         ->get());
     }
@@ -24,16 +29,18 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\PostStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
+        $this->authorize('create',Post::class);
+
         return response()->json(Post::create([
-            "title"=>$request->input('title'),
-            "text"=>$request->input('text'),
-            "creation_time"=>$request->input('creation_time'),
-            "author_id"=>$request->input('author_id')
+            "title" => $request->input('title'),
+            "text" => $request->input('text'),
+            "creation_time" => $request->input('creation_time'),
+            "author_id" => $request->input('author_id')
         ]));
     }
 
@@ -45,10 +52,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
+        $this->authorize('view', Post::class);
+
         return response()->json(DB::table('posts')
-        ->join('users','posts.author_id','=','users.id')
-        ->select('posts.title','posts.text','posts.creation_time','users.name','users.lastname')
-        ->where('posts.id','=',$id)
+        ->join('users', 'posts.author_id', '=', 'users.id')
+        ->select('posts.title', 'posts.text', 'posts.creation_time', 'users.name', 'users.lastname')
+        ->where('posts.id', '=', $id)
         ->get()
     );
     }
@@ -56,13 +65,14 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostUpdateRequest $request, Post $post)
     {
-        $post=Post::find($id);
+        $this->authorize('update', $post);
+
         return response()->json($post->update($request->all()));
     }
 
@@ -72,8 +82,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        return response()->json(Post::destroy($id));
+        $this->authorize('delete', $post);
+
+        return response()->json($post->delete());
     }
 }

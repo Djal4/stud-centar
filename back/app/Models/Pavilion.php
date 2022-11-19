@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\{
+    Factories\HasFactory,
+    Model
+};
 
 class Pavilion extends Model
 {
@@ -18,7 +20,7 @@ class Pavilion extends Model
      */
     protected $fillable=[
         'title',
-        'price',
+        'price_per_day',
         'location'
     ];
 }

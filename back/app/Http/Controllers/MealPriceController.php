@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\{
+    MealPriceStoreRequest,
+    MealPriceUpdateRequest
+};
+use App\Models\MealPrice;
 use Illuminate\Http\Request;
 
 class MealPriceController extends Controller
@@ -13,28 +18,26 @@ class MealPriceController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $this->authorize('viewAny', MealPrice::class);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(MealPrice::all());
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\MealPriceStoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MealPriceStoreRequest $request)
     {
-        //
+        $this->authorize('create', MealPrice::class);
+
+        return response()->json([
+            "price" => $request->price,
+            "card_type_id" => $request->card_type_id,
+            "meal_id" => $request->meal_id
+        ]);
     }
 
     /**
@@ -45,30 +48,23 @@ class MealPriceController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $this->authorize('view', MealPrice::class);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json(MealPrice::find($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  App\Http\Requests\MealPriceUpdateRequest  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MealPriceUpdateRequest $request, MealPrice $mealPrice)
     {
-        //
+        $this->authorize('update', MealPrice::class);
+
+        return response()->json($mealPrice->update($request->all()));
     }
 
     /**
@@ -79,6 +75,8 @@ class MealPriceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('delete', MealPrice::class);
+        
+        return response()->json(MealPrice::destroy($id));
     }
 }

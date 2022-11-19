@@ -16,15 +16,15 @@ class MealSeeder extends Seeder
     public function run()
     {
         DB::table('meals')->insert([
-            'title'=>'breakfast'
+            'title' => 'breakfast'
         ]);
 
         DB::table('meals')->insert([
-            'title'=>'lunch'
+            'title' => 'lunch'
         ]);
 
         DB::table('meals')->insert([
-            'title'=>'dinner'
+            'title' => 'dinner'
         ]);
     }
 }
