@@ -22,4 +22,10 @@ class Ticket extends Model
         'parent_id',
         'time'
     ];
+/*
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    */
 }

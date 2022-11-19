@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     /**
@@ -13,17 +14,11 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return response()->json(DB::table('posts')
+        ->join('users','posts.author_id','=','users.id')
+        ->select('posts.title','posts.creation_time','users.name','users.lastname')
+        ->orderByDesc('posts.creation_time')
+        ->get());
     }
 
     /**
@@ -34,7 +29,12 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return response()->json(Post::create([
+            "title"=>$request->input('title'),
+            "text"=>$request->input('text'),
+            "creation_time"=>$request->input('creation_time'),
+            "author_id"=>$request->input('author_id')
+        ]));
     }
 
     /**
@@ -45,18 +45,12 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        return response()->json(DB::table('posts')
+        ->join('users','posts.author_id','=','users.id')
+        ->select('posts.title','posts.text','posts.creation_time','users.name','users.lastname')
+        ->where('posts.id','=',$id)
+        ->get()
+    );
     }
 
     /**
@@ -68,7 +62,8 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post=Post::find($id);
+        return response()->json($post->update($request->all()));
     }
 
     /**
@@ -79,6 +74,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return response()->json(Post::destroy($id));
     }
 }

@@ -28,4 +28,10 @@ class Card extends Model
         'pavilion_id',
         'room'
     ];
+/*
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    */
 }
