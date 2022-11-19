@@ -104,12 +104,28 @@
 	line-height: 42px;
 
 	background-image: url('../images/signinButtonImg.jpg');
+	background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+                    rgba(0, 0, 0, 0.5)), url('../images/signinButtonImg.jpg');
 	color: white;
 	border-radius: 30px 0px;
 }
 
+.text-field:has(input) + p,
+.text-field:has(input:valid) + p,
+form:not(.bad-credentials) p.bad-credentials{
+	display: none;
+}
+
+form.invalid .text-field:has(input:invalid) + p,
+form.bad-credentials p.bad-credentials{
+	display: flex;
+	align-items: center;
+	font-size: 35px;
+	color: rgb(154, 19, 19);
+}
+
 .sign-in{
-	margin-bottom: 70px;
+	margin-bottom: 20px;
 }
 form[name="login"]{
 	display: flex;
@@ -137,5 +153,9 @@ form[name="login"]{
 	.text-field input{
 		font-size: 25px;
 		line-height: 28px;
+	}
+	#login-container > .login-p{
+		font-size: 50px;
+		line-height: 55px;
 	}
 }
