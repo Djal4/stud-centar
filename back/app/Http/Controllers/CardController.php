@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccomodationPayment;
 use App\Models\Card;
 use App\Models\MealPrice;
 use Illuminate\Http\Request;
@@ -16,6 +17,7 @@ class CardController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create',Card::class);
         return response()->json(Card::store([
             "creation_date"=>$request->input('creation_date'),
             "expiration_date"=>$request->input('expiration_date'),
@@ -32,9 +34,10 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Card $card)
     {
-        return response()->json(Card::find($id));
+        $this->authorize('view',$card);
+        return response()->json($card);
     }
 
     /**
@@ -46,6 +49,7 @@ class CardController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->authorize('update',Card::class);
         $card=Card::find($id);
         if(empty($request->input('money'))
             &&empty($request->input('breakfast'))
@@ -54,9 +58,9 @@ class CardController extends Controller
         return response()->json($card->update($request->all()));
     }
 
-    public function addMeals(Request $request,$id)
+    public function addMeals(Request $request,Card $card)
     {
-        $card=Card::find($id);
+        $this->authorize('addMeal',$card);
         $mealPrices=MealPrice::select('price','meal_id')->where('card_type_id','=',$card->card_type_id);
         $money=$request->input('breakfast')*$mealPrices[0]->price+$request->input('lunch')*$mealPrices[1]->price+$request->input('dinner')*$mealPrices[2]->price;
         if($card->money>=$money){
@@ -75,6 +79,7 @@ class CardController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('delete',Card::class);
         return response()->json(Card::destroy($id));
     }
 }

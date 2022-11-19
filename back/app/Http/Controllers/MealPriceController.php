@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MealPrice;
 use Illuminate\Http\Request;
 
 class MealPriceController extends Controller
@@ -13,17 +14,8 @@ class MealPriceController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $this->authorize('viewAny',MealPrice);
+        return response()->json(MealPrice::all());
     }
 
     /**
@@ -34,7 +26,12 @@ class MealPriceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->authorize('create',MealPrice::class);
+        return response()->json([
+            "price"=>$request->price,
+            "card_type_id"=>$request->card_type_id,
+            "meal_id"=>$request->meal_id
+        ]);
     }
 
     /**
@@ -45,18 +42,8 @@ class MealPriceController extends Controller
      */
     public function show($id)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $this->authorize('view',MealPrice::class);
+        return response()->json(MealPrice::find($id));
     }
 
     /**
@@ -66,9 +53,10 @@ class MealPriceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, MealPrice $mealPrice)
     {
-        //
+        $this->authorize('update',MealPrice::class);
+        return response()->json($mealPrice->update($request->all()));
     }
 
     /**
@@ -79,6 +67,7 @@ class MealPriceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->authorize('delete',MealPrice::class);
+        return response()->json(MealPrice::destroy($id));
     }
 }

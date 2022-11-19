@@ -2,39 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccomodationPayment;
+use App\Models\Card;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AccomodationPaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,Card $card)
     {
-        //
+        $this->authorize('create',$card);
+        if(!empty($request->input('flag')))
+        {
+            $price=DB::table('cards')
+                ->join('pavilion','pavilion.id','=','cards.pavilion_id')
+                ->select('pavilion.price')
+                ->where('cards.id','=',$id)
+                ->limit(1)
+                ->get();
+            
+        }
+        return response()->json(
+        
+        );
     }
 
     /**
@@ -43,42 +39,12 @@ class AccomodationPaymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(AccomodationPayment $accomodationPayment)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $this->authorize('view',$accomodationPayment);
+        return response()->json([
+            "payments"=>AccomodationPayment::select('payment_date')->where('card_id','=',$accomodationPayment->id)->orderByDesc('payment_date')->get(),
+            "student"=>Card::find($accomodationPayment->id)
+        ]);
     }
 }
