@@ -1,0 +1,34 @@
+#main-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    padding-bottom: 20px;
+}
+.ticket-container{
+    width: 70%;
+    background: #F2F2F2;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap:15px;
+}
+.ticket-container  button{
+    background: #C9B1DC;
+    border-radius: 20px;
+    padding: 10px 20px;
+
+}
+textarea[name="opis-kvara"]{
+    width: 90%;
+    min-height: 150px;
+    border-radius: 5px;
+    padding: 5px;
+}
+@media screen and (max-width:715px) {
+    #main-footer .ticket-container{
+        width: 90%;
+    }
+}

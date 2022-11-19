@@ -3,6 +3,7 @@ import mortarboard from "../images/logo.png";
 import qrCode from "../images/qr-code.png";
 import { useState } from "react";
 import ReactModal from "react-modal";
+import "../css/card.css";
 
 export default function Card({data}){
     const [modalIsOpened,setModalIsOpened]=useState(false);

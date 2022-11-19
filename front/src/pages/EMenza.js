@@ -6,10 +6,23 @@ import qrCode from "../images/qr-code.png";
 import food from "../images/food.png";
 import "../css/e-menza.css";
 import ReactModal from "react-modal";
-import { useState} from "react";
+import { useState } from "react";
 import closeButton from "../images/close-button.png";
+import { useNavigate } from "react-router-dom";
+import useSessionStorage from "../hooks/useSessionStorage";
+import useFetch from "../hooks/useFetch";
+import Loader from "../components/Loader";
 
 export default function EMenza(){
+	const navigate=useNavigate();
+    const [token]=useSessionStorage("token");
+    if(token==null)
+        navigate("/");
+    const {error,loading}=useFetch(`${process.env.REACT_APP_server}/api/showLoggedUser`,{headers:{
+        "Authorization":"Bearer "+token
+    }});
+    if(error!==undefined && error!==null)
+        navigate("/");
     const [modalIsOpened,setModalIsOpened]=useState(false);
     const openModal=()=>setModalIsOpened(true);
     const handleClose=()=>setModalIsOpened(false);
@@ -19,6 +32,8 @@ export default function EMenza(){
     const handleBrojRucaka=(event)=>setBrojRucaka(event.target.value);
     const [brojVecera,setBrojVecera]=useState(1);
     const handleBrojVecera=(event)=>setBrojVecera(event.target.value);
+	if(loading)
+        return <Loader/>;
     return(
         <>
         <ReactModal
@@ -35,9 +50,9 @@ export default function EMenza(){
                         <div className="cena">Večera 99din</div>
                     </div>
                     <div className="cenovnik-column">
-                        <input type="number" min={1} defaultValue="1" className="kolicina" onChange={handleBrojDorucka}/>
-                        <input type="number" min={1} defaultValue="1" className="kolicina" onChange={handleBrojRucaka}/>
-                        <input type="number" min={1} defaultValue="1" className="kolicina" onChange={handleBrojVecera}/>
+                        <input type="number" min="0" defaultValue="0" className="kolicina" onChange={handleBrojDorucka}/>
+                        <input type="number" min="0" defaultValue="0" className="kolicina" onChange={handleBrojRucaka}/>
+                        <input type="number" min="0" defaultValue="0" className="kolicina" onChange={handleBrojVecera}/>
                     </div>
                     <div className="cenovnik-column">
                     <div className="ukupno">{brojDorucaka*99}din</div>
