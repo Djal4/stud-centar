@@ -3,7 +3,7 @@ export default function Register(){
     return(
         <main id="main">
 	<div className="register-container">
-		<p className="register-p">Create account</p>
+		<p className="register-p">Kreiranje naloga</p>
 		<form>
 
 			<div id="first-container">
@@ -13,37 +13,37 @@ export default function Register(){
 						<i className="bi bi-person-fill pic" htmlFor="file"></i>
 						
 					</label>
-					<label className="label" htmlFor="file">choose photo</label>
+					<label className="label" htmlFor="file">Izaberi sliku</label>
 				</div>
 
 				<div id="personal-info">
-					<input type="text" name="" placeholder="name" className="input"/>
-					<input type="text" name="" placeholder="lastname"className="input"/>
+					<input type="text" name="" placeholder="Ime" className="input"/>
+					<input type="text" name="" placeholder="Prezime"className="input"/>
 				</div>
 			</div>
 
 			<div id="employed-student-container">
-				<p>employed</p>
+				<p>Zaposleni</p>
 				<p style={{color:"#FFFFFF"}}>/</p>
-				<p>student</p>
+				<p>Student</p>
 			</div>
 
 			<div id="other-info">
 				<div className="text-field">
 					<i className="bi bi-envelope"></i>
-					<input type="text" name="email" placeholder="Email" />
+					<input type="text" name="Email" placeholder="Email" />
 				</div>
 				<div className="text-field">
 					<i className="bi bi-key"></i>
-					<input type="text" name="password" placeholder="Password" />
+					<input type="text" name="Lozinka" placeholder="Password" />
 				</div>
 				<div className="text-field">
 					<i className="bi bi-calendar3-event"></i>
-					<input type="text" name="yob" placeholder="Year of birth" />
+					<input type="text" name="yob" placeholder="Datum rodjenja" />
 				</div>
 			</div>
 
-			<button id="create-account">Create account</button>
+			<button id="create-account">Prijavi se</button>
 
 			
 

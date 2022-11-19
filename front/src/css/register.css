@@ -3,20 +3,25 @@
 :root{
 	--fontLogin: 'Inter', sans-serif;
 
-	--color-p-black: #000000;
+	--color-p-kreiraj-nalog: #EE3B3B;	
 	--color-input-placeholder:rgba(4, 5, 5, 0.63);
-
-	--border-register-container:rgba(174, 174, 174, 0.92);
-
 	--color-input-black:#000000;
-
 	--white:#FFFFFF;
+
+	--background-create-account:rgba(238, 59, 59, 0.9);
+
+	--border-register-container:rgba(207, 213, 244, 0.92);
+	--border-p-kreiraj-nalog:1px solid #000000;
+
+	--shadow-kreiraj-nalog:0px 4px 4px rgba(0, 0, 0, 0.25);
+
+	--box-shadow-create-account:0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 
 #main{
 
-	background-image: url('../images/bg.jpg');
+	background-image: url('../images/background-image.png');
 	background-repeat: no-repeat;
 	background-size: cover;	
 	
@@ -42,7 +47,9 @@
  	font-weight: 400;
  	font-size: 60px;
  	line-height: 73px;
- 	color: var(--color-p-black);
+ 	color: var(--color-p-kreiraj-nalog);
+	box-shadow:var(--border-p-kreiraj-nalog);
+	text-shadow: var(--shadow-kreiraj-nalog);
 }
 
 
@@ -183,10 +190,10 @@
 #create-account{
 	border: none;
 	border-radius: 30px 0px;
-	padding: 20px 40px;
-	
-	background-image: linear-gradient(rgba(0, 0, 0, 0.7),
-                       rgba(0, 0, 0, 0.7)), url('../images/signinButtonImg.jpg');
+	padding: 20px 60px;
+
+	background: var(--background-create-account);
+	box-shadow: var(--box-shadow-create-account);
 
 	font-family: var(--fontLogin);
 	font-style: normal;
@@ -234,7 +241,7 @@
 	}
 }
 
-@media only screen and (max-width: 480px)
+@media only screen and (max-width: 492px)
 {
 	.register-container{
 		padding: 7px;
@@ -258,7 +265,7 @@
  	}
  	 #create-account{
 	 	font-size: 20px;
-	 	padding: 20px 30px;
+	 	padding: 10px 30px;
 	 }
 }
 

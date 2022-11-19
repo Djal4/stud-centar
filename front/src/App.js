@@ -14,6 +14,7 @@ function App() {
                     <Route path='/create-account' element={<Register/>}/>
                     <Route path='/e-dom' element={<EDom/>}/>
                     <Route path='/e-menza' element={<EMenza/>}/>
+                    <Route path='/test' element={<Register/>} />
                 </Routes>
             </Router>
         </div>
