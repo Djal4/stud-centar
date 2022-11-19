@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -25,6 +26,7 @@ Route::get("/generate/users",function(){
 
 Route::group(['middleware'=>['auth:sanctum']],function(){
     Route::resource("/user",UserController::class)->except(["create","index","edit"]);
+    Route::resource("/post",PostController::class)->except(["create","edit"]);
     Route::put("/user/{id}/changePassword",[UserController::class,"changePassword"]);
     Route::post("/logout",[AuthController::class,"logOut"]);
 });
