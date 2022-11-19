@@ -6,7 +6,7 @@ import qrCode from "../images/qr-code.png";
 import food from "../images/food.png";
 import "../css/e-menza.css";
 import ReactModal from "react-modal";
-import { useState,useCallback } from "react";
+import { useState} from "react";
 import closeButton from "../images/close-button.png";
 
 export default function EMenza(){
@@ -14,11 +14,11 @@ export default function EMenza(){
     const openModal=()=>setModalIsOpened(true);
     const handleClose=()=>setModalIsOpened(false);
     const [brojDorucaka,setBrojDorucaka]=useState(1);
-    const handleBrojDorucka=useCallback((event)=>setBrojDorucaka(event.target.value),[brojDorucaka]);
+    const handleBrojDorucka=(event)=>setBrojDorucaka(event.target.value);
     const [brojRucaka,setBrojRucaka]=useState(1);
-    const handleBrojRucaka=useCallback((event)=>setBrojRucaka(event.target.value),[brojRucaka]);
+    const handleBrojRucaka=(event)=>setBrojRucaka(event.target.value);
     const [brojVecera,setBrojVecera]=useState(1);
-    const handleBrojVecera=useCallback((event)=>setBrojRucaka(event.target.value),[brojVecera]);
+    const handleBrojVecera=(event)=>setBrojVecera(event.target.value);
     return(
         <>
         <ReactModal
@@ -48,6 +48,9 @@ export default function EMenza(){
                 <div className="ukupno">
                     <p>Ukupno: <span>{(brojDorucaka+brojRucaka+brojVecera)*99}din</span></p>
                 </div>
+				<div className="submit-meals absolute-center">
+					<button>Potvrdi</button>
+				</div>
             </div>
         </ReactModal>
         <Header/>

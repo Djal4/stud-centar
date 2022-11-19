@@ -7,7 +7,6 @@ import Feeds from "../components/Feeds";
 export default function Home(){
     const [loading,setLoading]=useState(true);
     const [token,setToken]=useSessionStorage("token");
-    const [user,setUser]=useState();
     useEffect(()=>{
         (async()=>{
             if(token===null)
@@ -21,13 +20,10 @@ export default function Home(){
                 }
             });
             if(!response.ok){
-                setUser(null);
                 setToken(null);
                 setLoading(false);
                 return;
             }
-            let responseBody=await response.json();
-            setUser(responseBody);
             setLoading(false);
         })();
     },[token,setToken]);

@@ -1,9 +1,12 @@
 import personCard from "../images/person-circle.png";
 import mortarboard from "../images/logo.png";
 import qrCode from "../images/qr-code.png";
-import food from "../images/food.png";
+import { useState } from "react";
+import ReactModal from "react-modal";
 
 export default function Card({data}){
+    const [modalIsOpened,setModalIsOpened]=useState(false);
+    const handleCloseModal=()=>setModalIsOpened(false);
     return(
         <>
             <div className="card">
@@ -21,7 +24,7 @@ export default function Card({data}){
                         </div>
                     <div>
                         <p>Prezime:</p>
-                        <p>Tatomir</p>
+                        <p>{data.lastname}</p>
                     </div>
                     <div>
                         <p>Studira:</p>
@@ -37,7 +40,7 @@ export default function Card({data}){
                     </div>
                     <div>
                         <p>God rodjenja:</p>
-                        <p>2001.</p>
+                        <p>{new Date(data.year_of_birth).getFullYear()}.</p>
                     </div>
                     <div>
                         <p>Br. indeksa:</p>
@@ -49,7 +52,13 @@ export default function Card({data}){
                     </div>
                 </div>
             </div>
-            <button className="button btn-spec">E-kartica</button>
+            <button className="button btn-spec" onClick={()=>setModalIsOpened(true)}>E-kartica</button>
+            <ReactModal
+            isOpen={modalIsOpened}
+            onRequestClose={handleCloseModal}
+            >
+
+            </ReactModal>
         </>
     );
 }
