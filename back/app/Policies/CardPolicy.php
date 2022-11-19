@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Card;
-use App\Models\User;
+use App\Models\{
+    Card,
+    User
+};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CardPolicy
@@ -19,7 +21,8 @@ class CardPolicy
      */
     public function view(User $user, Card $card)
     {
-        return $user->role_id>1 || $card->user_id==$user->id;   
+        return $user->role_id > 1 
+        || $card->user_id == $user->id;   
     }
 
     /**
@@ -30,7 +33,7 @@ class CardPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     /**
@@ -42,12 +45,13 @@ class CardPolicy
      */
     public function update(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     public function addMeal(User $user,Card $card)
     {
-        return $user->role_id==3 || $user->id==$card->user_id;
+        return $user->role_id ==3 
+        || $user->id == $card->user_id;
     }
 
     /**
@@ -59,6 +63,6 @@ class CardPolicy
      */
     public function delete(User $user)
     {
-        return $user->role_id==3;
+        return $user->role_id == 3;
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MealPriceStoreRequest;
-use App\Http\Requests\MealPriceUpdateRequest;
+use App\Http\Requests\{
+    MealPriceStoreRequest,
+    MealPriceUpdateRequest
+};
 use App\Models\MealPrice;
 use Illuminate\Http\Request;
 
@@ -16,7 +18,8 @@ class MealPriceController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny',MealPrice::class);
+        $this->authorize('viewAny', MealPrice::class);
+
         return response()->json(MealPrice::all());
     }
 
@@ -31,9 +34,9 @@ class MealPriceController extends Controller
         $this->authorize('create', MealPrice::class);
 
         return response()->json([
-            "price"=>$request->price,
-            "card_type_id"=>$request->card_type_id,
-            "meal_id"=>$request->meal_id
+            "price" => $request->price,
+            "card_type_id" => $request->card_type_id,
+            "meal_id" => $request->meal_id
         ]);
     }
 
@@ -72,7 +75,8 @@ class MealPriceController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('delete',MealPrice::class);
+        $this->authorize('delete', MealPrice::class);
+        
         return response()->json(MealPrice::destroy($id));
     }
 }

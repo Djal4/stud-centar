@@ -24,10 +24,10 @@ class CardStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'creation_date'=>'required',
-            'expiration_date'=>'required',
-            'user_id'=>'required|numeric',
-            'card_type_id'=>'required|numeric|max:1'
+            'creation_date' => 'required',
+            'expiration_date' => 'required',
+            'user_id' => 'required|numeric',
+            'card_type_id' => 'required|numeric|max:1'
         ];
     }
 }

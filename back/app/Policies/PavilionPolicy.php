@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Pavilion;
-use App\Models\User;
+use App\Models\{
+    Pavilion,
+    User
+};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PavilionPolicy
@@ -41,11 +43,11 @@ class PavilionPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id==3;
+        return $user->role_id == 3;
     }
 
     public function delete(User $user)
     {
-        return $user->role_id==3;
+        return $user->role_id == 3;
     }
 }

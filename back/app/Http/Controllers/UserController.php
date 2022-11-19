@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\{
+    UserStoreRequest,
+    UserUpdateRequest
+};
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,16 +20,18 @@ class UserController extends Controller
      */
     public function store(UserStoreRequest $request)
     {
-        $this->authorize('create',User::class);
+        $this->authorize('create', User::class);
 
-        return response()->json(User::create([
-            'name'=> $request->input('name'),
-            'lastname'=> $request->input('lastname'),
-            'email'=>$request->input('email'),
-            'password'=>bcrypt($request->input('password')),
-            'year_of_birth'=>$request->input('year_of_birth'),
-            'role_id'=>$request->input('role_id')
-        ]));
+        return response()->json(
+            User::create([
+                'name' => $request->input('name'),
+                'lastname' => $request->input('lastname'),
+                'email' => $request->input('email'),
+                'password' => bcrypt($request->input('password')),
+                'year_of_birth' => $request->input('year_of_birth'),
+                'role_id' => $request->input('role_id')
+            ])
+        );
     }
 
     /**
@@ -38,7 +42,8 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        $this->authorize('view',$user);
+        $this->authorize('view', $user);
+
         return response()->json($user);
     }
 
@@ -56,7 +61,7 @@ class UserController extends Controller
      */
     public function update(UserUpdateRequest $request, $id)
     {
-        $this->authorize('update',User::class);
+        $this->authorize('update', User::class);
         $user=User::find($id);
         if(empty($request->input('password')))    
             $user->update($request->all());
@@ -66,10 +71,13 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    public function changePassword(Request $request,$id)
+    public function changePassword(Request $request, $id)
     {
         $user=User::find($id);
-        return response()->json($user->update(["password"=>bcrypt($request->input('password'))]));
+        return response()->json(
+            $user->update([
+                "password"=>bcrypt($request->input('password'))
+            ]));
     }
 
     /**
@@ -80,7 +88,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('destroy',User::class);
+        $this->authorize('destroy', User::class);
+
         return response()->json(User::destroy($id));
     }
 }

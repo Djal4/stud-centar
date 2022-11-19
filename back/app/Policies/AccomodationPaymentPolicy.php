@@ -2,9 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\AccomodationPayment;
-use App\Models\Card;
-use App\Models\User;
+use App\Models\{
+    AccomodationPayment,
+    Card,
+    User
+}
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class AccomodationPaymentPolicy
@@ -20,7 +22,8 @@ class AccomodationPaymentPolicy
      */
     public function view(User $user, AccomodationPayment $accomodationPayment)
     {
-        return $user->role_id>1 || $accomodationPayment->card_id==Card::find($user->id)->id;
+        return $user->role_id > 1 
+            || $accomodationPayment->card_id == Card::find($user->id)->id;
     }
 
     /**
@@ -29,8 +32,8 @@ class AccomodationPaymentPolicy
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function create(User $user,Card $card)
+    public function create(User $user, Card $card)
     {
-        return $user->id==$card->user_id;
+        return $user->id == $card->user_id;
     }
 

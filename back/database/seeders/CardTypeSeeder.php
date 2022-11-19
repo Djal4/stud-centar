@@ -16,11 +16,11 @@ class CardTypeSeeder extends Seeder
     public function run()
     {
         DB::table('card_type')->insert([
-            'title'=>'Budget'
+            'title' => 'Budget'
         ]);
 
         DB::table('card_type')->insert([
-            'title'=>'Self financing'
+            'title' => 'Self financing'
         ]);
     }
 }

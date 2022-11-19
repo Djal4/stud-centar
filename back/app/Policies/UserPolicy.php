@@ -18,7 +18,8 @@ class UserPolicy
      */
     public function view(User $user, User $model)
     {
-        return $user->id==$model->id || $user->role_id>1;
+        return $user->id == $model->id 
+        || $user->role_id > 1;
     }
 
     /**
@@ -29,7 +30,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     /**
@@ -41,7 +42,7 @@ class UserPolicy
      */
     public function update(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     /**
@@ -53,6 +54,6 @@ class UserPolicy
      */
     public function delete(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 }

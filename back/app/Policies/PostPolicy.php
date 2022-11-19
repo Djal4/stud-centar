@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Post;
-use App\Models\User;
+use App\Models\{
+    Post,
+    User
+};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
@@ -41,7 +43,7 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     /**
@@ -53,7 +55,8 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->role_id>2 || $user->id==$post->author_id;
+        return $user->role_id > 2 
+            || $user->id == $post->author_id;
     }
 
     /**
@@ -65,6 +68,7 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->role_id>2 || $user->id==$post->author_id;
+        return $user->role_id > 2 
+            || $user->id == $post->author_id;
     }
 }

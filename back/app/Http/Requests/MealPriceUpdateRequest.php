@@ -24,9 +24,9 @@ class MealPriceUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'price'=>'sometimes|required|max:4|numeric',
-            'card_type_id'=>'sometimes|required|numeric|max:1',
-            'meal_id'=>'sometimes|required|numeric|max:2'
+            'price' => 'sometimes|required|max:4|numeric',
+            'card_type_id' => 'sometimes|required|numeric|max:1',
+            'meal_id' => 'sometimes|required|numeric|max:2'
         ];
     }
 }

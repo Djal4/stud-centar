@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\MealPrice;
-use App\Models\User;
+use App\Models\{
+    MealPrice,
+    User
+};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class MealPricePolicy
@@ -41,7 +43,7 @@ class MealPricePolicy
      */
     public function create(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     /**
@@ -53,7 +55,7 @@ class MealPricePolicy
      */
     public function update(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     /**
@@ -65,6 +67,6 @@ class MealPricePolicy
      */
     public function delete(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 }

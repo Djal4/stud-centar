@@ -20,7 +20,7 @@ class CORS
 
         if($response instanceof \Illuminate\Http\Response) {
             return $response->header('Access-Control-Allow-Origin','*');
-    }
+        }
 
     return $response;
     }

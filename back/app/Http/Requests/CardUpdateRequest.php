@@ -24,10 +24,10 @@ class CardUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'creation_date'=>'sometimes|required',
-            'expiration_date'=>'sometimes|required',
-            'user_id'=>'sometimes|required|numeric',
-            'card_type_id'=>'sometimes|required|numeric|max:1'
+            'creation_date' => 'sometimes|required',
+            'expiration_date' => 'sometimes|required',
+            'user_id' => 'sometimes|required|numeric',
+            'card_type_id' => 'sometimes|required|numeric|max:1'
         ];
     }
 }

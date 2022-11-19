@@ -24,9 +24,9 @@ class PavilionStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required|min:6',
-            'price'=>'required|numeric|max:4',
-            'location'=>'required|min:10'
+            'title' => 'required|min:6',
+            'price' => 'required|numeric|max:4',
+            'location' => 'required|min:10'
         ];
     }
 }

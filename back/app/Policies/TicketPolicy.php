@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Ticket;
-use App\Models\User;
+use App\Models\{
+    Ticket,
+    User
+};
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class TicketPolicy
@@ -18,12 +20,12 @@ class TicketPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     public function response(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 
     /**
@@ -35,7 +37,7 @@ class TicketPolicy
      */
     public function view(User $user, Ticket $ticket)
     {
-        return $user->role_id>1 || $ticket->user_id==$user->id;
+        return $user->role_id > 1 || $ticket->user_id == $user->id;
     }
 
     /**
@@ -58,7 +60,7 @@ class TicketPolicy
      */
     public function update(User $user, Ticket $ticket)
     {
-        return $user->role_id>1 || $user->id==$ticket->user_id;
+        return $user->role_id > 1 || $user->id == $ticket->user_id;
     }
 
     /**
@@ -70,6 +72,6 @@ class TicketPolicy
      */
     public function delete(User $user)
     {
-        return $user->role_id>1;
+        return $user->role_id > 1;
     }
 }

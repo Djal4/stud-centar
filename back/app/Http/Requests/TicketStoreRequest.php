@@ -24,9 +24,9 @@ class TicketStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_id'=>'required|integer',
-            'content'=>'required|min:20',
-            'time'=>'required'
+            'user_id' => 'required|integer',
+            'content' => 'required|min:20',
+            'time' => 'required'
         ];
     }
 }

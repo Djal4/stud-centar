@@ -24,7 +24,7 @@ class TicketUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'content'=>'required|min:20'
+            'content' => 'required|min:20'
         ];
     }
 }

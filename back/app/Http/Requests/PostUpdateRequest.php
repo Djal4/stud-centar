@@ -24,8 +24,8 @@ class PostUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'sometimes|required|min:6',
-            'text'=>'sometimes|required|min:20'
+            'title' => 'sometimes|required|min:6',
+            'text' => 'sometimes|required|min:20'
         ];
     }
 }

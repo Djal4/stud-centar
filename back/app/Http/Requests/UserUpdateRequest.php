@@ -24,11 +24,11 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'sometimes|required|min:3',
-            'lastname'=>'sometimes|required|min:3',
-            'email'=>'sometimes|required|unique',
-            'password'=>'sometimes|required|confirmed',
-            'role_id'=>'sometimes|required|integer'
+            'name' => 'sometimes|required|min:3',
+            'lastname' => 'sometimes|required|min:3',
+            'email' => 'sometimes|required|unique',
+            'password' => 'sometimes|required|confirmed',
+            'role_id' => 'sometimes|required|integer'
         ];
     }
 }
