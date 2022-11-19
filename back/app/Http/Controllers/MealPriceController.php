@@ -14,7 +14,7 @@ class MealPriceController extends Controller
      */
     public function index()
     {
-        $this->authorize('viewAny',MealPrice);
+        $this->authorize('viewAny',MealPrice::class);
         return response()->json(MealPrice::all());
     }
 
