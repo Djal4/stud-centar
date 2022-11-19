@@ -24,7 +24,7 @@ Route::get("/generate/users",function(){
     return User::factory(20)->create();
 });
 
-Route::group(['middleware'=>['auth:sanctum']],function(){
+Route::group(['middleware'=>['auth:sanctum','cors']],function(){
     Route::resource("/user",UserController::class)->except(["create","index","edit"]);
     Route::resource("/post",PostController::class)->except(["create","edit"]);
     Route::put("/user/{id}/changePassword",[UserController::class,"changePassword"]);
