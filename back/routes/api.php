@@ -10,7 +10,11 @@ use App\Http\Controllers\{
 };
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\User;
+use App\Models\{
+    User,
+    Post
+};
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,6 +31,10 @@ Route::post("/login",[AuthController::class, "login"])->name('login');
 //Generating users
 Route::get("/generate/users", function() {
     return User::factory(20)->create();
+});
+
+Route::get("generate/posts", function() {
+    return Post::factory(20)->create();
 });
 
 Route::group(['middleware' => ['auth:sanctum', 'cors']], function() {
