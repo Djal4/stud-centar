@@ -6,6 +6,7 @@ export default function Login({setToken}){
     const login=async()=>{
         const form=document.forms["login"];
         try{
+            
             if(!form.checkValidity()){
                 form.classList.remove("bad-credentials");
                 form.classList.add("invalid");

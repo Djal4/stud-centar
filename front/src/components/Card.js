@@ -1,4 +1,4 @@
-import personCard from "../images/person-circle.png";
+import personCard from "../images/person-card.png";
 import mortarboard from "../images/logo.png";
 import qrCode from "../images/qr-code.png";
 import { useState } from "react";
@@ -58,7 +58,7 @@ export default function Card({data}){
             isOpen={modalIsOpened}
             onRequestClose={handleCloseModal}
             >
-
+                AAA
             </ReactModal>
         </>
     );

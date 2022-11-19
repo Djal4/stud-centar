@@ -1,7 +1,7 @@
 import Header from "../components/Header";
 import NavigationPanel from "../components/NavigationPanel";
 import personCard from "../images/person-card.png";
-import mortarboard from "../images/logo.png";
+import mortarboard from "../images/mortarboard.png";
 import qrCode from "../images/qr-code.png";
 import food from "../images/food.png";
 import "../css/e-menza.css";
@@ -73,50 +73,51 @@ export default function EMenza(){
             <NavigationPanel/>
             <div id="hero">
 	
-	<div className="card">
-		<div className="card-first">
-			<img src={personCard} alt="person card"/>
-			<div className="absolute-center">
-				<img src={mortarboard} alt="logo"/>
-			</div>
-			<img src={qrCode} alt="qrCode"/>
-		</div>
-		<div className="card-sec">
-			<div>
-				<p>Ime:</p>
-				<p>Uroš</p>
-			</div>
-			<div>
-				<p>Prezime:</p>
-				<p>Tatomir</p>
-			</div>
-			<div>
-				<p>Studira:</p>
-				<p>Pmf</p>
-			</div>
-			<div>
-				<p>Datum izdavanja</p>
-				<p>01.10.2020.</p>
-			</div>
-		
-			<div>
-				<p>Br. kartice:</p>
-				<p>6548348</p>
-			</div>
-			<div>
-				<p>God rodjenja:</p>
-				<p>2001.</p>
-			</div>
-			<div>
-				<p>Br. indeksa:</p>
-				<p>87/2020</p>
-			</div>
-			<div>
-				<p>Datum isteka:</p>
-				<p>31.10.2024.</p>
-			</div>
-		</div>
-	</div>
+			<div className="card">
+        <div className="card-first">
+            <img src={personCard} alt="person card"/>
+            <div className="logo">
+                <img src={mortarboard} alt="logo"/>
+                <p>E-studenjak</p>
+            </div>
+            <img src={qrCode}/>
+        </div>
+        <div className="card-sec">
+            <div>
+                <p>Ime:</p>
+                <p>Uroš</p>
+            </div>
+            <div>
+                <p>Prezime:</p>
+                <p>Tatomir</p>
+            </div>
+            <div>
+                <p>Studira:</p>
+                <p>Pmf</p>
+            </div>
+            <div>
+                <p>Datum izdavanja</p>
+                <p>01.10.2020.</p>
+            </div>
+
+            <div>
+                <p>Br. kartice:</p>
+                <p>6548348</p>
+            </div>
+            <div>
+                <p>God rodjenja:</p>
+                <p>2001.</p>
+            </div>
+            <div>
+                <p>Br. indeksa:</p>
+                <p>87/2020</p>
+            </div>
+            <div>
+                <p>Datum isteka:</p>
+                <p>31.10.2024.</p>
+            </div>
+        </div>
+    </div>
 
 	<button className="button btn-spec">E-kartica</button>
 
@@ -142,7 +143,7 @@ export default function EMenza(){
         <img src={food} alt="food"/>
 			<p>Večera</p>
 			<p id="spec-font">7</p>
-			<button className="button" onClick={openModal}d>Dopuni</button>
+			<button className="button" onClick={openModal}>Dopuni</button>
 		</div>
 
 	</div>
